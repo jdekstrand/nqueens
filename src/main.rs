@@ -13,7 +13,7 @@ fn place_queens(n: usize, placed_queens: Vec<usize>, open_ys: Vec<usize>, interc
     for c in 0..open_ys.len() {
         //check if you can place a queen
         let y = open_ys[c];
-        let b1 = n + y - x; //y = x + b => b = y - x, added n to make positve
+        let b1 = n + y - x; //y = x + b => b = y - x, added n to make nonnegative
         let b2 = y + x; // y = (-1)x + b => b = y + x
         if !intercepts_up.contains(&b1) && !intercepts_down.contains(&b2) {
             let mut queens = placed_queens.to_vec();
@@ -30,7 +30,7 @@ fn place_queens(n: usize, placed_queens: Vec<usize>, open_ys: Vec<usize>, interc
 }
 
 fn main() {
-    let n = 5;
+    let n = 8;
     let y_values= (0..n).collect::<Vec<usize>>();
 
     place_queens(n, vec![], y_values, vec![], vec![] );
